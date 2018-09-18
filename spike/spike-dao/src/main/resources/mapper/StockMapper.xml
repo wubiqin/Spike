@@ -15,37 +15,63 @@
 
     <insert id="insertSelective" parameterType="com.wbq.spike.po.Stock">
         insert into stock
-        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="name != null" >
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
                 name,
             </if>
-            <if test="count != null" >
+            <if test="count != null">
                 count,
             </if>
-            <if test="sale != null" >
+            <if test="sale != null">
                 sale,
             </if>
-            <if test="version != null" >
+            <if test="version != null">
                 version,
             </if>
         </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="name != null" >
+            <if test="name != null">
                 #{name,jdbcType=VARCHAR},
             </if>
-            <if test="count != null" >
+            <if test="count != null">
                 #{count,jdbcType=INTEGER},
             </if>
-            <if test="sale != null" >
+            <if test="sale != null">
                 #{sale,jdbcType=INTEGER},
             </if>
-            <if test="version != null" >
+            <if test="version != null">
                 #{version,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
+
+    <update id="updateById" parameterType="int">
+        update stock
+        <set>
+            count = count-1
+            and sale = sale+1
+        </set>
+        where id=#{id}
+    </update>
+
+    <update id="updateByIdAndVersion" parameterType="int">
+        update stock
+        <set>
+            count = count-1
+            and sale = sale+1
+            and version = version+1
+        </set>
+        where id=#{id} and version=#{version}
+    </update>
+
+    <select id="getById" parameterType="int" resultMap="stockResultMap">
+        select
+        <include refid="all_column"/>
+        from stock
+        where id=#{id}
+    </select>
 
 </mapper>

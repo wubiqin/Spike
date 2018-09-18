@@ -1,15 +1,15 @@
-package com.wbq.spike.dao;
+package com.wbq.spike.service;
 
 import com.wbq.spike.po.Stock;
-import org.apache.ibatis.annotations.Param;
 
 /**
  *  *
  *  * @author biqin.wu
- *  * @since 17 九月 2018
+ *  * @since 19 九月 2018
  *  
  */
-public interface StockDao {
+public interface StockService {
+
     /**
      * insert stock
      *
@@ -33,7 +33,7 @@ public interface StockDao {
      * @param version version
      * @return update count
      */
-    int updateByIdAndVersion(@Param("id") int id, @Param("version") int version);
+    int updateByIdAndVersion(int id, int version);
 
     /**
      * get stock by id

@@ -16,5 +16,9 @@
             <groupId>com.wbq</groupId>
             <artifactId>spike-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.wbq</groupId>
+            <artifactId>spike-service</artifactId>
+        </dependency>
     </dependencies>
 </project>

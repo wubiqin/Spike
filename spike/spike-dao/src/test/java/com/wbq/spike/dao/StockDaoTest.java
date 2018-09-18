@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
-import static org.junit.Assert.*;
-
 /**
  *  *
  *  * @author biqin.wu
@@ -25,11 +23,11 @@ public class StockDaoTest {
 
     @Test
     public void insertSelective() {
-        Stock stock=new Stock();
+        Stock stock = new Stock();
         stock.setName("iphone xs");
         stock.setSale(0);
         stock.setCount(100);
-        int count=stockDao.insertSelective(stock);
-        Assert.assertEquals(1,count);
+        int count = stockDao.insertSelective(stock);
+        Assert.assertEquals(1, count);
     }
 }

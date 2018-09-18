@@ -20,6 +20,12 @@ public class Order implements Serializable {
 
     private Date createTime;
 
+    private Order(Builder builder) {
+        setSid(builder.sid);
+        setName(builder.name);
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -50,5 +56,27 @@ public class Order implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public static final class Builder {
+        private Integer sid;
+        private String name;
+
+        public Builder() {
+        }
+
+        public Builder sid(Integer val) {
+            sid = val;
+            return this;
+        }
+
+        public Builder name(String val) {
+            name = val;
+            return this;
+        }
+
+        public Order build() {
+            return new Order(this);
+        }
     }
 }

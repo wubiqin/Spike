@@ -1,14 +1,15 @@
-package com.wbq.spike.dao;
+package com.wbq.spike.service;
 
 import com.wbq.spike.po.Order;
 
 /**
  *  *
  *  * @author biqin.wu
- *  * @since 17 九月 2018
+ *  * @since 19 九月 2018
  *  
  */
-public interface OrderDao {
+public interface OrderService {
+
     /**
      * insert order
      *
