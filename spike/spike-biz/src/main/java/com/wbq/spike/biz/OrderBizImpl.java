@@ -8,6 +8,7 @@ import com.wbq.spike.po.Stock;
 import com.wbq.spike.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,9 @@ public class OrderBizImpl implements OrderService {
 
     @Resource
     private StockService stockService;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

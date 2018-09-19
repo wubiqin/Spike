@@ -53,6 +53,12 @@ public class OrderBizImplTest {
         }
     }
 
+    @Test
+    public void createOrderOptimisticByRedis() throws InterruptedException {
+
+    }
+
+
 
     private class Inner implements Runnable {
 
