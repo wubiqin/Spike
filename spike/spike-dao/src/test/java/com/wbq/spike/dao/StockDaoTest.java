@@ -3,9 +3,6 @@ package com.wbq.spike.dao;
 import com.wbq.spike.po.Stock;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
@@ -15,9 +12,7 @@ import javax.annotation.Resource;
  *  * @since 17 九月 2018
  *  
  */
-@RunWith(SpringRunner.class)
-@ContextConfiguration(locations = "classpath:spring-dao.xml")
-public class StockDaoTest {
+public class StockDaoTest extends BaseTest{
     @Resource
     private StockDao stockDao;
 

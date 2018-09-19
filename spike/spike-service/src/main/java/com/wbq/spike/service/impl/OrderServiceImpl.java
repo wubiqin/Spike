@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  *  * @since 19 九月 2018
  *  
  */
-@Service("orderService")
+@Service
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderDao orderDao;

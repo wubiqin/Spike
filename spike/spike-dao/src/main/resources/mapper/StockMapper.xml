@@ -51,8 +51,8 @@
     <update id="updateById" parameterType="int">
         update stock
         <set>
-            count = count-1
-            and sale = sale+1
+            count = count-1,
+            sale = sale+1
         </set>
         where id=#{id}
     </update>
@@ -60,9 +60,9 @@
     <update id="updateByIdAndVersion" parameterType="int">
         update stock
         <set>
-            count = count-1
-            and sale = sale+1
-            and version = version+1
+            count = count-1,
+            sale = sale+1,
+            version = version+1
         </set>
         where id=#{id} and version=#{version}
     </update>

@@ -12,8 +12,8 @@
     id, sid, name, create_time
     </sql>
 
-    <insert id="insert" parameterType="com.wbq.spike.po.Order">
-        insert into order (sid, name)
+    <insert id="insert">
+        insert into order_info(sid, name)
         values (#{sid},#{name})
     </insert>
 </mapper>

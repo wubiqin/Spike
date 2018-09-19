@@ -9,32 +9,22 @@ package com.wbq.spike.exception;
 public class StateCodeException extends RuntimeException {
     private final int status;
 
-    private final String message;
-
-    public StateCodeException(String message, int status, String message1) {
+    public StateCodeException(String message, int status) {
         super(message);
         this.status = status;
-        this.message = message1;
     }
 
-    public StateCodeException(String message, Throwable cause, int status, String message1) {
+    public StateCodeException(String message, Throwable cause, int status) {
         super(message, cause);
         this.status = status;
-        this.message = message1;
     }
 
-    public StateCodeException(Throwable cause, int status, String message) {
+    public StateCodeException(Throwable cause, int status) {
         super(cause);
         this.status = status;
-        this.message = message;
     }
 
     public int getStatus() {
         return status;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
     }
 }
