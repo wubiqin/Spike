@@ -7,7 +7,7 @@
 
 # 加乐观锁实现
  不可重复读下读取不到其他事务提交到的数据，修改为read——committed
-        //read and check stock
+ 
         Stock stock = checkStock(sid);
 
         updateStockOptimistic(sid, stock);
