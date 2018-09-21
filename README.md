@@ -3,9 +3,7 @@ public int createOrder(int sid) throws StateCodeException {
         logger.info("createOrder sid={}", sid);
         //read and check stock
         Stock stock = checkStock(sid);
-
         stockService.updateById(sid);
-
         return insertOrder(sid, stock);
     }
     
