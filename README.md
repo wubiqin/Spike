@@ -2,7 +2,8 @@
 ## 不加乐观锁实现
 @Override
 @Transactional(rollbackFor = Exception.class)
-public int createOrder(int sid) throws StateCodeException {
+public int createOrder(int sid) throws StateCodeException 
+{
         logger.info("createOrder sid={}", sid);
         //read and check stock
         Stock stock = checkStock(sid);
