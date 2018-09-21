@@ -18,7 +18,7 @@ public class StockDaoTest extends BaseTest{
 
     @Test
     public void insertSelective() {
-        Stock stock = new Stock();
+        Stock stock = new Stock.Builder().build();
         stock.setName("iphone xs");
         stock.setSale(0);
         stock.setCount(100);

@@ -32,7 +32,7 @@ public class OrderBizImplTest {
     @Test
     public void createOrder() throws InterruptedException {
         init();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 1000; i++) {
             executorService.execute(new Inner());
         }
         executorService.shutdown();
@@ -44,8 +44,8 @@ public class OrderBizImplTest {
     @Test
     public void createOrderOptimistic() throws InterruptedException {
         init();
-        for (int i = 0; i < 100; i++) {
-            executorService.execute(new Inner());
+        for (int i = 0; i < 1000; i++) {
+            executorService.execute(new Inner1());
         }
         executorService.shutdown();
         while (!executorService.awaitTermination(1, TimeUnit.SECONDS)) {
@@ -55,22 +55,44 @@ public class OrderBizImplTest {
 
     @Test
     public void createOrderOptimisticByRedis() throws InterruptedException {
-
+        init();
+        for (int i = 0; i < 1000; i++) {
+            executorService.execute(new Inner2());
+        }
+        executorService.shutdown();
+        while (!executorService.awaitTermination(1, TimeUnit.SECONDS)) {
+            System.out.println("worker running");
+        }
     }
-
 
 
     private class Inner implements Runnable {
 
         @Override
         public void run() {
-            orderService.createOrderOptimistic(1);
+            orderService.createOrder(1);
+        }
+    }
+
+    private class Inner1 implements Runnable {
+
+        @Override
+        public void run() {
+            orderService.createOrderOptimistic(2);
+        }
+    }
+
+    private class Inner2 implements Runnable {
+
+        @Override
+        public void run() {
+            orderService.createOrderOptimisticByRedis(1);
         }
     }
 
     private void init() {
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("wbq-thread-%d").build();
         executorService = new ThreadPoolExecutor(50, 50, 0L,
-                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(200), threadFactory, new ThreadPoolExecutor.AbortPolicy());
+                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(1000), threadFactory, new ThreadPoolExecutor.AbortPolicy());
     }
 }

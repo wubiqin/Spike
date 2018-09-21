@@ -21,6 +21,18 @@ public class Stock implements Serializable {
 
     private Integer version;
 
+    public Stock() {
+    }
+
+    private Stock(Builder builder) {
+        setId(builder.id);
+        setName(builder.name);
+        setCount(builder.count);
+        setSale(builder.sale);
+        setVersion(builder.version);
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +71,45 @@ public class Stock implements Serializable {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public static final class Builder {
+        private Integer id;
+        private String name;
+        private Integer count;
+        private Integer sale;
+        private Integer version;
+
+        public Builder() {
+        }
+
+        public Builder id(Integer val) {
+            id = val;
+            return this;
+        }
+
+        public Builder name(String val) {
+            name = val;
+            return this;
+        }
+
+        public Builder count(Integer val) {
+            count = val;
+            return this;
+        }
+
+        public Builder sale(Integer val) {
+            sale = val;
+            return this;
+        }
+
+        public Builder version(Integer val) {
+            version = val;
+            return this;
+        }
+
+        public Stock build() {
+            return new Stock(this);
+        }
     }
 }
