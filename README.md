@@ -1,9 +1,5 @@
-# Spike
-## 不加乐观锁实现
-@Override
-@Transactional(rollbackFor = Exception.class)
-public int createOrder(int sid) throws StateCodeException 
-{
+## 不加锁实现
+public int createOrder(int sid) throws StateCodeException {
         logger.info("createOrder sid={}", sid);
         //read and check stock
         Stock stock = checkStock(sid);
@@ -23,8 +19,6 @@ public int createOrder(int sid) throws StateCodeException
      * @return 0 1
      * @throws StateCodeException exception
      */
-@Override
-@Transactional(rollbackFor = Exception.class,isolation =Isolation.READ_COMMITTED)
     public int createOrderOptimistic(int sid) throws StateCodeException {
         logger.info("createOrderOptimistic sid={}", sid);
         //read and check stock
@@ -36,8 +30,6 @@ public int createOrder(int sid) throws StateCodeException
     }
     
 # redis加数据库乐观锁实现
-@Override
-    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     public int createOrderOptimisticByRedis(int sid) throws StateCodeException {
         String countKey = RedisConstant.STOCK_COUNT + sid;
         String saleKey = RedisConstant.STOCK_SALE + sid;
