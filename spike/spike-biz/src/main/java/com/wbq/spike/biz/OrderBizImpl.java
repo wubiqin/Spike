@@ -1,6 +1,5 @@
 package com.wbq.spike.biz;
 
-import com.google.common.collect.Lists;
 import com.wbq.spike.api.OrderService;
 import com.wbq.spike.constant.CodeConstant;
 import com.wbq.spike.constant.RedisConstant;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
